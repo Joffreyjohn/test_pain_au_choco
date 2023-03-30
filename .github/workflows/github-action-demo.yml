@@ -1,0 +1,23 @@
+name: Chocolatine
+
+on:
+  push:
+    branches-ignore:
+    - 'ga-ignore-* '
+  pull_request:
+    branches-ignore:
+    - 'ga-ignore-*'
+    
+env:
+  MIRROR_URL: git@github.com:joffreyjohn/test_pain_au_choco.git
+  EXECUTABLES: bsq
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: test
+      uses: actions/checkout@v3
+    - run: |
+        echo The name is $GITHUB_REF
+        du -skh --exclude=" .git"
